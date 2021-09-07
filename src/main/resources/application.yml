@@ -1,0 +1,38 @@
+server:
+  port: 18080
+spring:
+  profiles:
+    active: dev
+  application:
+    name: ice
+  #  liquibase:
+  #    change-log: classpath:/db/liquibase/liquibase.xml
+  freemarker:
+    suffix: .ftl
+    template-loader-path:
+      - classpath:/templates
+  jackson:
+    date-format: yyyy-MM-dd'T'HH:mm:ss.SSSZ
+    default-property-inclusion: non_null
+    mapper:
+      accept_case_insensitive_properties: true
+    deserialization:
+      fail-on-unknown-properties: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/iot_mapping_mgmt?useUnicode=true&characterEncoding=utf-8&autoReconnectForPools=true&autoReconnect=true
+    username: pub_user
+    password: asdasd
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 15
+      driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'
+  level:
+    root: info
